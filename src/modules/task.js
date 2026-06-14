@@ -19,4 +19,5 @@ class Task {
     this.completed = !this.completed;
   };
 }
+
 export { Task };

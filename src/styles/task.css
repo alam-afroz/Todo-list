@@ -1,0 +1,9 @@
+#task_card {
+  background-color: var(--icy-blue);
+  height: 90%;
+  width: 95%;
+  justify-self: center;
+  display: grid;
+  border-radius: 12px;
+  border-left: 4px solid var(--school-bus-yellow);
+}

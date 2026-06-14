@@ -2,7 +2,7 @@ import { Project } from "./project.js";
 
 import { myTasks, createTask } from "./taskManager.js";
 
-import { storeProject } from "../services/storage.js";
+import { storeProject, retrieveProjects } from "../services/storage.js";
 
 let myProjects = [];
 
@@ -27,5 +27,25 @@ function removeTaskFromProject(n, title) {
 
   projectName.deleteTaskFromProject(task);
 }
+function removeProjectFromProject(title) {
+  const indexOfProject = myProjects.findIndex(
+    (project) => project.title === title,
+  );
+  myProjects.splice(indexOfProject, 1);
+}
 
-export { myProjects, createProject, addTaskToProject, removeTaskFromProject };
+function updateMyProjects() {
+  myProjects = retrieveProjects();
+  console.log(myProjects);
+}
+
+createProject("Project One");
+
+export {
+  myProjects,
+  createProject,
+  addTaskToProject,
+  removeTaskFromProject,
+  updateMyProjects,
+  removeProjectFromProject,
+};

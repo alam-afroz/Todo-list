@@ -10,11 +10,16 @@ function storeProject() {
   localStorage.setItem("myProjectArray", JSON.stringify(myProjects));
 }
 
-const rawMyTaskArray = localStorage.getItem("myTaskArray");
+function retrieveTasks() {
+  const rawMyTaskArray = localStorage.getItem("myTaskArray");
+  const activeTasks = JSON.parse(rawMyTaskArray);
+  return activeTasks;
+}
 
-const rawMyProjectArray = localStorage.getItem("myProjectArray");
+function retrieveProjects() {
+  const rawMyProjectArray = localStorage.getItem("myProjectArray");
 
-const activeTasks = JSON.parse(rawMyTaskArray);
-const activeProjects = JSON.parse(rawMyProjectArray);
-
-export { activeTasks, activeProjects, storeProject, storeTasks };
+  const activeProjects = JSON.parse(rawMyProjectArray);
+  return activeProjects;
+}
+export { retrieveProjects, retrieveTasks, storeProject, storeTasks };

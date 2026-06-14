@@ -16,4 +16,5 @@ class Project {
     this.projectTask.splice(indexOfTask, 1);
   }
 }
+
 export { Project };

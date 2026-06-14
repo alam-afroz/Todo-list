@@ -1,6 +1,6 @@
 import { Task } from "./task.js";
 
-import { storeTasks } from "../services/storage.js";
+import { retrieveTasks, storeTasks } from "../services/storage.js";
 
 let myTasks = [];
 
@@ -16,4 +16,16 @@ function removeTaskFromTask(taskTitle) {
   myTasks.splice(indexOfTask, 1);
 }
 
-export { myTasks, createTask, removeTaskFromTask };
+function updateMyTasks() {
+  myTasks = retrieveTasks();
+}
+
+createTask("Gym", "gym", "2026-06-10", "high", ["subtask1", "subtask2"]);
+createTask("Walk", "gym", "2026-06-11", "high", ["subtask1", "subtask2"]);
+createTask("Walk", "gym", "2026-06-11", "high", ["subtask1", "subtask2"]);
+createTask("Walk", "gym", "2026-06-11", "high", ["subtask1", "subtask2"]);
+createTask("Walk", "gym", "2026-06-11", "high", ["subtask1", "subtask2"]);
+createTask("Walk", "gym", "2026-06-11", "high", ["subtask1", "subtask2"]);
+createTask("learn", "gym", "2026-06-12", "high", ["subtask1", "subtask2"]);
+
+export { myTasks, createTask, removeTaskFromTask, updateMyTasks };

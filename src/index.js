@@ -3,30 +3,43 @@ import {
   addTaskToProject,
   createProject,
   removeTaskFromProject,
+  updateMyProjects,
+  removeProjectFromProject,
 } from "./modules/projectManager.js";
+
+import { showProjectForm, showTaskForm } from "./dom/form.js";
 
 import {
   createTask,
   myTasks,
   removeTaskFromTask,
+  updateMyTasks,
 } from "./modules/taskManager.js";
 
-import { changeDateFormat, checkDueDateStillLeft } from "./services/data.js";
+import { changeDateFormat, checkDueDateStillLeft } from "./services/date.js";
 
-import { activeTasks, activeProjects } from "./services/storage.js";
+import "./styles/main.css";
 
-createTask("Gym", "gym", "2026-06-10", "high", ["subtask1", "subtask2"]);
-createTask("Walk", "gym", "2026-06-11", "high", ["subtask1", "subtask2"]);
-createTask("learn", "gym", "2026-06-12", "high", ["subtask1", "subtask2"]);
+import "./styles/task.css";
 
-createProject("Project1");
-createProject("Project2");
-createProject("Project3");
+import { showTasks } from "./dom/domTask.js";
 
-console.log(myTasks);
-checkDueDateStillLeft();
-console.log(checkDueDateStillLeft());
+const form = document.getElementById("form_task");
 
-console.log(myProjects);
-console.log(activeProjects);
-console.log(activeTasks);
+form.addEventListener("submit", () => {
+  event.preventDefault();
+  const userTask = new FormData(form);
+  const userTaskObject = Object.fromEntries(userTask);
+
+  createTask(
+    userTaskObject.task_title,
+    userTaskObject.description,
+    userTaskObject.task_due_date,
+    userTaskObject.priority,
+    userTaskObject.subTask,
+  );
+  console.log(myTasks);
+  form.reset();
+  document.getElementById("dialog_task").close();
+});
+showTasks();
