@@ -7,7 +7,15 @@ import {
   removeProjectFromProject,
 } from "./modules/projectManager.js";
 
-import { showProjectForm, showTaskForm } from "./dom/form.js";
+import {
+  showProjectForm,
+  showTaskForm,
+  createTaskFromForm,
+  closeTaskForm,
+  appendSubTask,
+  closeProjectForm,
+  createProjectFromForm,
+} from "./dom/form.js";
 
 import {
   createTask,
@@ -16,30 +24,30 @@ import {
   updateMyTasks,
 } from "./modules/taskManager.js";
 
-import { changeDateFormat, checkDueDateStillLeft } from "./services/date.js";
+import { changeDateFormat } from "./services/date.js";
 
 import "./styles/main.css";
+
+import "./styles/project.css";
 
 import "./styles/task.css";
 
 import { showTasks } from "./dom/domTask.js";
 
-const form = document.getElementById("form_task");
+import { retrieveProjects, retrieveTasks } from "./services/storage.js";
 
-form.addEventListener("submit", () => {
-  event.preventDefault();
-  const userTask = new FormData(form);
-  const userTaskObject = Object.fromEntries(userTask);
+import { showProjects } from "./dom/domProject.js";
 
-  createTask(
-    userTaskObject.task_title,
-    userTaskObject.description,
-    userTaskObject.task_due_date,
-    userTaskObject.priority,
-    userTaskObject.subTask,
-  );
-  console.log(myTasks);
-  form.reset();
-  document.getElementById("dialog_task").close();
-});
+// updateMyProjects();
+
+retrieveProjects();
+
+showProjects();
+// updateMyTasks();
+retrieveTasks();
+createTaskFromForm();
 showTasks();
+closeTaskForm();
+appendSubTask();
+closeProjectForm();
+createProjectFromForm();

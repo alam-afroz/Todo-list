@@ -2,7 +2,7 @@ import { Task } from "./task.js";
 
 import { retrieveTasks, storeTasks } from "../services/storage.js";
 
-let myTasks = [];
+let myTasks = retrieveTasks();
 
 const createTask = (title, description, dueDate, priority, subtask) => {
   const newTask = new Task(title, description, dueDate, priority, subtask);
@@ -11,21 +11,33 @@ const createTask = (title, description, dueDate, priority, subtask) => {
   storeTasks();
 };
 
-function removeTaskFromTask(taskTitle) {
-  const indexOfTask = myTasks.findIndex((task) => task.title === taskTitle);
-  myTasks.splice(indexOfTask, 1);
+function removeTaskFromTask(taskID) {
+  const indexOfTaskToRemove = myTasks.findIndex((task) => task.id === taskID);
+  myTasks.splice(taskID, 1);
 }
 
 function updateMyTasks() {
   myTasks = retrieveTasks();
 }
 
-createTask("Gym", "gym", "2026-06-10", "high", ["subtask1", "subtask2"]);
-createTask("Walk", "gym", "2026-06-11", "high", ["subtask1", "subtask2"]);
-createTask("Walk", "gym", "2026-06-11", "high", ["subtask1", "subtask2"]);
-createTask("Walk", "gym", "2026-06-11", "high", ["subtask1", "subtask2"]);
-createTask("Walk", "gym", "2026-06-11", "high", ["subtask1", "subtask2"]);
-createTask("Walk", "gym", "2026-06-11", "high", ["subtask1", "subtask2"]);
-createTask("learn", "gym", "2026-06-12", "high", ["subtask1", "subtask2"]);
+// createTask(
+//   "Gym",
+//   "gym ghgh ghghghg ghgskjffdfdfl afjndjfdmfnsdfnd kdfdsflkdfkdsfskdjfkf ksfksdfkdfsfsjfksf   jjjjjjjjjjjjjjjjj",
+//   "2026-06-10",
+//   "High-Priority",
+//   ["subtask1", "subtask2"],
+// );
+// createTask("Walk", "gym", "2026-06-11", "High-Priority", [
+//   "subtask1",
+//   "subtask2",
+// ]);
+// createTask("Walk", "gym", "2026-06-11", "Moderate-Priority", [
+//   "subtask1",
+//   "subtask2",
+// ]);
+// createTask("Walk", "gym", "2026-06-11", "Low-Priority", [
+//   "subtask1",
+//   "subtask2",
+// ]);
 
 export { myTasks, createTask, removeTaskFromTask, updateMyTasks };

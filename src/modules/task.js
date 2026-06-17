@@ -1,12 +1,5 @@
 class Task {
-  constructor(
-    title,
-    description,
-    dueDate,
-    priority,
-    subtask,
-    completed = false,
-  ) {
+  constructor(title, description, dueDate, priority, subtask, completed) {
     this.id = crypto.randomUUID();
     this.title = title;
     this.description = description;
@@ -15,9 +8,9 @@ class Task {
     this.subtask = subtask;
     this.completed = completed;
   }
-  taskCompleted = function () {
+  taskCompleted() {
     this.completed = !this.completed;
-  };
+  }
 }
 
 export { Task };

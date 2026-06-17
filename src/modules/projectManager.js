@@ -4,21 +4,22 @@ import { myTasks, createTask } from "./taskManager.js";
 
 import { storeProject, retrieveProjects } from "../services/storage.js";
 
-let myProjects = [];
+let myProjects = retrieveProjects();
 
-const createProject = (name) => {
+function createProject(name) {
   const newProject = new Project(name);
 
   myProjects.push(newProject);
 
   storeProject();
-};
+}
 
-function addTaskToProject(n, title) {
-  const projectName = myProjects[n];
-  let task = myTasks.find((todo) => todo.title === title);
+function addTaskToProject(project, taskID) {
+  const projectName = project;
+  let task = myTasks.find((todo) => todo.id === taskID);
 
   projectName.addTaskToProject(task);
+  storeProject();
 }
 
 function removeTaskFromProject(n, title) {
@@ -27,19 +28,19 @@ function removeTaskFromProject(n, title) {
 
   projectName.deleteTaskFromProject(task);
 }
-function removeProjectFromProject(title) {
+function removeProjectFromProject(projectID) {
   const indexOfProject = myProjects.findIndex(
-    (project) => project.title === title,
+    (project) => project.id === projectID,
   );
   myProjects.splice(indexOfProject, 1);
 }
 
+// createProject("Projector");
+
 function updateMyProjects() {
-  myProjects = retrieveProjects();
+  // myProjects = retrieveProjects();
   console.log(myProjects);
 }
-
-createProject("Project One");
 
 export {
   myProjects,

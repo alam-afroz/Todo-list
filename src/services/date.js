@@ -4,18 +4,12 @@ import { myTasks } from "../modules/taskManager.js";
 import { se } from "date-fns/locale";
 
 function changeDateFormat(date) {
-  const newDate = format(parseISO(date), "dd-MM-yy, eee");
-  return newDate;
+  if (date === "") return "No Due date";
+  else {
+    const newDate = format(parseISO(date), "dd-MM-yy, eee");
+
+    return newDate;
+  }
 }
 
-export { changeDateFormat, checkDueDateStillLeft };
-
-function checkDueDateStillLeft() {
-  let userPickedDate;
-  myTasks.forEach((element) => {
-    userPickedDate = element.dueDate;
-    const today = startOfToday();
-  });
-  if (isBefore(parseISO(userPickedDate), startOfToday())) return false;
-  else true;
-}
+export { changeDateFormat };

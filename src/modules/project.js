@@ -1,14 +1,13 @@
 class Project {
-  constructor(name, projectTask = []) {
+  constructor(name, projectTask) {
+    this.id = crypto.randomUUID();
     this.name = name;
     this.projectTask = projectTask;
   }
   addTaskToProject(task) {
     this.projectTask.push(task);
   }
-  showProject() {
-    console.log("Project name", this.name, "TASKS : ", this.projectTask);
-  }
+
   deleteTaskFromProject(giveTask) {
     const indexOfTask = this.projectTask.findIndex(
       (task) => task.title === giveTask,

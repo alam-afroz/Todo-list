@@ -1,0 +1,180 @@
+/* Task card */
+/* 
+.task_card_title {
+  grid-row: 1/2;
+  grid-column: 1/2;
+  font-weight: bold;
+  align-self: center;
+  justify-self: start;
+  margin-left: 8px;
+  font-size: 1.2rem;
+}
+.task_card_description {
+  grid-row: 2/3;
+  grid-column: 1/4;
+  min-height: 37px;
+  overflow: auto;
+  font-size: 14px;
+  opacity: 55%;
+  background-color: var(--dodger-blue);
+  width: 97%;
+  align-self: center;
+  justify-self: center;
+  border-radius: 8px;
+  padding-left: 1vh;
+}
+.task_card_priority {
+  grid-row: 1/2;
+  grid-column: 3/4;
+  border-radius: 8px;
+  width: 94px;
+  height: 70%;
+  font-size: 14px;
+  align-self: center;
+  justify-self: end;
+  color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-wrap: nowrap;
+}
+.task_card_due_date {
+  grid-row: 2/3;
+  grid-column: 4/6;
+
+  font-size: 12px;
+  align-self: end;
+  justify-self: end;
+  margin-right: 1vh;
+  color: var(--dodger-blue);
+
+  white-space: pre-line;
+} */
+
+/* Project form */
+
+#form_project {
+  background-color: var(--icy-blue);
+  padding: 1vh;
+  display: grid;
+
+  grid-template-rows: 1fr 0.5fr 0.5fr;
+  border-radius: 16px;
+  border: 2px solid black;
+}
+#form_project > p {
+  display: flex;
+  flex-direction: column;
+  margin: 1vh;
+  align-items: start;
+  max-height: 60px;
+  color: var(--persian-blue);
+  padding: 10px;
+  gap: 8px;
+  box-shadow: 0px 0px 4px black;
+  border-radius: 12px;
+}
+
+#project_name {
+  all: unset;
+  border-bottom: 2px solid var(--school-bus-yellow);
+}
+
+.save_project {
+  cursor: pointer;
+  grid-row: 2/3;
+
+  background-color: var(--school-bus-yellow);
+  border-radius: 12px;
+  text-align: center;
+  font-weight: bold;
+  color: var(--icy-blue);
+  justify-self: center;
+  align-self: center;
+  height: 95%;
+  width: 50%;
+}
+.project_form_close {
+  cursor: pointer;
+  grid-row: 3/4;
+  grid-column: 1/2;
+  background-color: var(--dodger-blue);
+  border-radius: 12px;
+  text-align: center;
+  font-weight: bold;
+  color: black;
+  justify-self: center;
+  align-self: center;
+  height: 80%;
+  width: 50%;
+}
+#project_list {
+  display: grid;
+
+  height: 95%;
+  grid-auto-rows: minmax(25%, max-content);
+  min-height: 0;
+
+  overflow-y: auto;
+}
+.project_card {
+  background-color: var(--icy-blue);
+  width: 95%;
+  margin-top: 6px;
+  justify-self: center;
+  display: grid;
+  grid-template-rows: 33% 33% 34%;
+  grid-template-columns: 80% 20%;
+
+  border-radius: 12px;
+  box-shadow: 0px 0px 2px black;
+}
+.project_card_name {
+  grid-row: 1/2;
+  grid-column: 1/2;
+  font-size: 1.1rem;
+  padding: 2px 12px;
+  text-wrap: nowrap;
+  border-bottom: 2px solid var(--dodger-blue);
+}
+
+.delete_project_btn {
+  cursor: pointer;
+  grid-row: 1/4;
+  grid-column: 2/3;
+  /* width: 4vw; */
+  /* justify-self: end; */
+  font-size: 4vh;
+  opacity: 100%;
+  background-color: var(--school-bus-yellow);
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 0px 8px 8px 0px;
+}
+.add_task_to_project_btn {
+  cursor: pointer;
+  grid-row: 2/3;
+  grid-column: 1/2;
+  justify-self: center;
+  background-color: var(--persian-blue);
+  color: var(--icy-blue);
+  border-radius: 4px;
+  align-self: center;
+  height: 90%;
+  width: 80%;
+  text-align: center;
+}
+.open_project_btn {
+  cursor: pointer;
+  grid-row: 3/4;
+  grid-column: 1/2;
+  justify-self: center;
+  background-color: var(--dodger-blue);
+  color: var(--persian-blue);
+  border-radius: 4px;
+  width: 80%;
+  height: 90%;
+  align-self: center;
+  text-align: center;
+}

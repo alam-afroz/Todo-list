@@ -7,11 +7,17 @@
   padding: 0;
 }
 :root {
-  --persian-blue: #072ac8;
-  --dodger-blue: #1e96fc;
-  --icy-blue: #a2d6f9;
-  --bright-lemon: #fcf300;
-  --school-bus-yellow: #ffc600;
+  /* --space-indigo: #2b2d42ff;
+--lavender-grey: #8d99aeff;
+--platinum: #edf2f4ff;
+--punch-red: #ef233cff;
+--flag-red: #d90429ff; */
+
+  --persian-blue: #2b2d42ff;
+  --dodger-blue: #8d99aeff;
+  --icy-blue: #edf2f4ff;
+  --bright-lemon: #ef233cff;
+  --school-bus-yellow: #d90429ff;
   --logo-font: "Handlee", cursive;
   --font: "Figtree", sans-serif;
 }
@@ -19,7 +25,7 @@ body {
   font-family: var(--font);
 }
 .container {
-  min-height: 100vh;
+  height: 100vh;
   display: grid;
   grid-template-columns: 20% 80%;
   grid-template-rows: 12% 10% 70% 8%;
@@ -89,9 +95,10 @@ nav {
   align-self: center;
   height: 95%;
   display: grid;
-  grid-template-rows: repeat(auto-fill, 20%);
-
-  overflow: auto;
+  grid-auto-rows: minmax(25%, max-content);
+  min-height: 0;
+  gap: 10px;
+  overflow-y: auto;
 }
 #add_task_btn {
   all: unset;
@@ -110,7 +117,7 @@ nav {
   border-radius: 8px;
 }
 #add_task_btn:hover {
-  background-color: white;
+  background-color: var(--icy-blue);
   box-shadow: 1px 1px 4px black;
 
   color: var(--persian-blue);
@@ -133,4 +140,7 @@ footer {
   font-weight: bold;
   opacity: 60%;
   color: var(--dodger-blue);
+}
+button {
+  all: unset;
 }
