@@ -28,6 +28,8 @@ function createTaskFromForm() {
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
+
+    document.getElementById("content").replaceChildren();
     const userTask = new FormData(form);
     const userTaskObject = Object.fromEntries(userTask);
     const subTaskArray = userTask.getAll("subtask");
@@ -79,7 +81,7 @@ function createProjectFromForm() {
     const userProject = new FormData(form);
     const userProjectObject = Object.fromEntries(userProject);
 
-    createProject(userProjectObject.project_name);
+    createProject(userProjectObject.project_name, []);
 
     document.getElementById("dialog_project").close();
     document.getElementById("project_list").replaceChildren();

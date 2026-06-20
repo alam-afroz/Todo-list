@@ -36,7 +36,8 @@ import { showTasks } from "./dom/domTask.js";
 
 import { retrieveProjects, retrieveTasks } from "./services/storage.js";
 
-import { showProjects } from "./dom/domProject.js";
+import { showProjects, addingTaskToProject } from "./dom/domProject.js";
+import { Project } from "./modules/project.js";
 
 // updateMyProjects();
 

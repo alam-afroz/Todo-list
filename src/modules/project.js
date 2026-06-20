@@ -5,7 +5,9 @@ class Project {
     this.projectTask = projectTask;
   }
   addTaskToProject(task) {
-    this.projectTask.push(task);
+    task.forEach((todo) => {
+      this.projectTask.push(todo);
+    });
   }
 
   deleteTaskFromProject(giveTask) {

@@ -6,17 +6,17 @@ import { storeProject, retrieveProjects } from "../services/storage.js";
 
 let myProjects = retrieveProjects();
 
-function createProject(name) {
-  const newProject = new Project(name);
+function createProject(name, taskList) {
+  const newProject = new Project(name, taskList);
 
   myProjects.push(newProject);
 
   storeProject();
 }
 
-function addTaskToProject(project, taskID) {
+function addTaskToProject(project, task) {
   const projectName = project;
-  let task = myTasks.find((todo) => todo.id === taskID);
+  // let task = myTasks.find((todo) => todo.id === taskID);
 
   projectName.addTaskToProject(task);
   storeProject();

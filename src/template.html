@@ -75,7 +75,7 @@
         <form id="form_project">
           <p>
             <label for="project_name">Project Name</label>
-            <input type="text" name="project_name" id="project_name" />
+            <input type="text" name="project_name" id="project_name" required />
           </p>
           <button type="submit" class="save_project">Save Project</button>
           <button class="project_form_close">Close</button>
@@ -85,9 +85,12 @@
         <form id="form_to_add_task_to_project">
           <fieldset class="fieldset">
             <legend>Select the Tasks to add to this Project</legend>
-            <button id="close_form_to_add_task_to_project">Close</button>
-            <button id="save_task_to_project">Save task to the Project</button>
+            <p class="fieldset_content"></p>
           </fieldset>
+          <button id="close_form_to_add_task_to_project">Close</button>
+          <button type="submit" id="save_task_to_project">
+            Save task to the Project
+          </button>
         </form>
       </dialog>
       <header>
@@ -103,7 +106,7 @@
         <div id="project_list"></div>
       </nav>
       <button id="add_task_btn">Task +</button>
-      <div id="content"></div>
+      <div id="content" data-state="task"></div>
       <footer>
         <p>
           <span

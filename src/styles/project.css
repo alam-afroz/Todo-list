@@ -145,12 +145,17 @@
   /* width: 4vw; */
   /* justify-self: end; */
   font-size: 4vh;
-  opacity: 100%;
+
+  background: transparent;
+  color: var(--bright-lemon);
+
+  text-align: center;
+  border-left: 2px solid var(--dodger-blue);
+  /* border-radius: 0px 8px 8px 0px; */
+}
+.delete_project_btn:hover {
   background-color: var(--school-bus-yellow);
   color: white;
-  font-weight: bold;
-  text-align: center;
-  border-radius: 0px 8px 8px 0px;
 }
 .add_task_to_project_btn {
   cursor: pointer;
@@ -174,7 +179,115 @@
   color: var(--persian-blue);
   border-radius: 4px;
   width: 80%;
+  font-size: 14px;
   height: 90%;
   align-self: center;
   text-align: center;
+}
+
+#form_to_add_task_to_project {
+  height: 40vh;
+  background-color: var(--icy-blue);
+  border-radius: 8px;
+  display: grid;
+  grid-template-rows: 60% 20% 20%;
+  padding: 4px;
+}
+.fieldset {
+  border: none;
+}
+.fieldset_content {
+  /* all: unset; */
+  display: grid;
+  border: none;
+  /* height: 95%; */
+  grid-auto-rows: minmax(15%, max-content);
+  grid-template-columns: 90% 10%;
+  min-height: 0;
+
+  overflow-y: auto;
+}
+.fieldset > legend {
+  color: var(--school-bus-yellow);
+  margin: 4px 0px;
+  border-bottom: 2px solid var(--bright-lemon);
+}
+.fieldset_content > label,
+.fieldset_content > input {
+  font-style: italic;
+  /* max-height: 20px; */
+  background-color: var(--dodger-blue);
+  border-radius: 4px;
+  margin: 2px 0px;
+}
+.fieldset_content > label {
+  margin: 4px 2px;
+  padding: 0px 4px;
+  min-height: 20px;
+}
+
+.fieldset_content > input {
+  justify-self: center;
+}
+#save_task_to_project {
+  cursor: pointer;
+  background-color: var(--persian-blue);
+  color: var(--icy-blue);
+  height: 95%;
+  margin: 2px;
+  text-align: center;
+  border-radius: 16px;
+}
+#save_task_to_project:hover {
+  outline: 2px solid var(--persian-blue);
+  background-color: var(--icy-blue);
+  color: var(--persian-blue);
+}
+#close_form_to_add_task_to_project {
+  cursor: pointer;
+
+  background-color: var(--school-bus-yellow);
+  color: var(--icy-blue);
+  height: 95%;
+  width: 96%;
+  justify-self: center;
+  /* margin: 4px; */
+  text-align: center;
+  border-radius: 16px;
+}
+#close_form_to_add_task_to_project:hover {
+  background: transparent;
+  outline: 2px solid var(--school-bus-yellow);
+  color: var(--school-bus-yellow);
+}
+.project_title {
+  grid-row: 1/2;
+
+  padding: 0px 8px;
+  font-size: 1.2rem;
+}
+#task_in_project {
+  grid-row: 2/3;
+
+  display: grid;
+  padding: 8px;
+  grid-auto-rows: minmax(25%, max-content);
+  min-height: 0;
+  gap: 10px;
+  overflow-y: auto;
+}
+.project_task_card {
+  background-color: var(--icy-blue);
+  box-shadow: 1px 0px 8px 1px var(--persian-blue);
+  width: 95%;
+  justify-self: center;
+  border-radius: 12px;
+}
+#show_task {
+  grid-row: 3/4;
+  margin: 0px 24px;
+
+  justify-self: end;
+  background-color: var(--dodger-blue);
+  color: var(--icy-blue);
 }
