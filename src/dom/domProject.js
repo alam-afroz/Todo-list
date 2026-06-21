@@ -1,42 +1,24 @@
 import {
+  addTaskToProject,
   myProjects,
   removeProjectFromProject,
-  addTaskToProject,
   updateMyProjects,
 } from "../modules/projectManager.js";
+
 import { myTasks } from "../modules/taskManager.js";
 
-import { showTasks } from "./domTask.js";
+import {
+  retrieveProjects,
+  retrieveTasks,
+  storeProject,
+  storeTasks,
+} from "../services/storage.js";
 
-import { retrieveProjects, storeProject } from "../services/storage.js";
-
-function g(projectID) {
-  document
-    .getElementById("form_to_add_task_to_project")
-    .addEventListener("submit", (e) => {
-      let taskList = [];
-      e.preventDefault();
-
-      const data = new FormData(e.target);
-
-      const dataObject = Object.fromEntries(data);
-      console.log(dataObject);
-      Object.values(dataObject).forEach((value) => taskList.push(value));
-
-      let m = myTasks.filter((task) => taskList.includes(task.id));
-
-      let projectForTheTask = myProjects.find(
-        (project) => project.id === projectID,
-      );
-
-      addTaskToProject(projectForTheTask, m);
-
-      document.getElementById("form_to_add_task_to_project").reset();
-      document.getElementById("add_task_to_project").close();
-
-      console.log(taskList);
-    });
+function a(p, t) {
+  addTaskToProject(p, t);
 }
+
+let currentProjectID = null;
 
 function addingTaskToProject() {
   myTasks.forEach((task) => {
@@ -48,19 +30,23 @@ function addingTaskToProject() {
     addThisTask.id = `${task.title}`;
     addThisTask.name = `${task.title}`;
     addThisTask.value = `${task.id}`;
-
+    console.log(task.id);
+    // storeTasks();
     document.querySelector(".fieldset_content").appendChild(label);
     document.querySelector(".fieldset_content").appendChild(addThisTask);
   });
-
   document.getElementById("add_task_to_project").showModal();
+}
+
+function openProject() {
+  //
 }
 
 function showProjects() {
   myProjects.forEach((project) => {
     const projectCard = document.createElement("div");
     projectCard.classList.add("project_card");
-    console.log(project);
+    // console.log(project);
     projectCard.dataset.id = project.id;
     let projectID = projectCard.dataset.id;
     document.getElementById("project_list").appendChild(projectCard);
@@ -68,7 +54,6 @@ function showProjects() {
     projectCardName.classList.add("project_card_name");
     projectCardName.textContent = `${project.name}`;
     projectCard.appendChild(projectCardName);
-    g(projectID);
 
     const deleteProjectBtn = document.createElement("button");
     deleteProjectBtn.classList.add("delete_project_btn");
@@ -78,18 +63,21 @@ function showProjects() {
     deleteProjectBtn.addEventListener("click", () => {
       removeProjectFromProject(projectID);
       projectCard.remove();
-      console.log(myProjects);
+      // console.log(myProjects);
       storeProject();
     });
 
     const addTaskToProjectBtn = document.createElement("button");
     addTaskToProjectBtn.classList.add("add_task_to_project_btn");
+    addTaskToProjectBtn.dataset.id = project.id;
     addTaskToProjectBtn.textContent = "Add Tasks";
     projectCard.appendChild(addTaskToProjectBtn);
 
     addTaskToProjectBtn.addEventListener("click", () => {
       document.querySelector(".fieldset_content").replaceChildren();
       addingTaskToProject();
+      currentProjectID = addTaskToProjectBtn.dataset.id;
+      // storeTaskToProject(projectID);
     });
 
     const openProjectBtn = document.createElement("button");
@@ -103,7 +91,7 @@ function showProjects() {
       let projectToOpen = myProjects.find(
         (project) => project.id === projectID,
       );
-      console.log(projectToOpen);
+      // console.log(projectToOpen);
       const projectTitle = document.createElement("p");
       projectTitle.classList.add("project_title");
       projectTitle.textContent = `${projectToOpen.name}`;
@@ -123,17 +111,48 @@ function showProjects() {
         projectTaskName.textContent = `${projectTask.title}`;
         projectTaskCard.appendChild(projectTaskName);
       });
-
-      const showTask = document.createElement("button");
-      showTask.id = "show_task";
-      showTask.textContent = "View Tasks";
-      document.getElementById("content").appendChild(showTask);
-
-      showTask.addEventListener("click", () => {
-        showTasks();
-      });
     });
   });
+  storeProject();
+  // console.log(myProjects);
 }
+
+let taskList = [];
+
+document
+  .getElementById("form_to_add_task_to_project")
+  .addEventListener("submit", (e) => {
+    e.preventDefault();
+    let projectToAddTask = myProjects.find(
+      (project) => project.id === currentProjectID,
+    );
+    console.log("project to add task to : ", projectToAddTask);
+    taskList.length = 0;
+
+    const data = new FormData(e.target);
+    const dataObject = Object.fromEntries(data);
+    console.log("User selected tasks in object from : ", dataObject);
+    Object.values(dataObject).forEach((value) => taskList.push(value));
+    // storeTasks();
+    let newTaskList = myTasks.filter((task) => {
+      return taskList.includes(task.id);
+    });
+    console.log("Task which will be added to task :", newTaskList);
+    newTaskList.forEach((task) => {
+      if (projectToAddTask.projectTask.some((item) => item.id === task.id)) {
+        console.log(
+          `${task.title} is already present in ${projectToAddTask.name}`,
+        );
+      } else {
+        projectToAddTask.addTaskToProject(newTaskList);
+      }
+    });
+    console.log('extracting id"s from form object :', taskList);
+    storeProject();
+    console.log("Current project array : ", myProjects);
+    document.getElementById("add_task_to_project").close();
+    document.getElementById("form_to_add_task_to_project").reset();
+    currentProjectID = null;
+  });
 
 export { showProjects, addingTaskToProject };

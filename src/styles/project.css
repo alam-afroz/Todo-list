@@ -183,6 +183,7 @@
   height: 90%;
   align-self: center;
   text-align: center;
+  text-wrap: balance;
 }
 
 #form_to_add_task_to_project {
@@ -263,7 +264,7 @@
 .project_title {
   grid-row: 1/2;
 
-  padding: 0px 8px;
+  margin: 0px 8px;
   font-size: 1.2rem;
 }
 #task_in_project {

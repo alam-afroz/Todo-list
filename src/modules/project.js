@@ -1,13 +1,14 @@
 class Project {
   constructor(name, projectTask) {
-    this.id = crypto.randomUUID();
     this.name = name;
-    this.projectTask = projectTask;
+    this.id = crypto.randomUUID();
+    this.projectTask = [...projectTask];
   }
   addTaskToProject(task) {
-    task.forEach((todo) => {
-      this.projectTask.push(todo);
-    });
+    // task.forEach((todo) => {
+
+    this.projectTask.push(...task);
+    // });
   }
 
   deleteTaskFromProject(giveTask) {

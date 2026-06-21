@@ -15,10 +15,10 @@ function createProject(name, taskList) {
 }
 
 function addTaskToProject(project, task) {
-  const projectName = project;
+  // const projectName = project;
   // let task = myTasks.find((todo) => todo.id === taskID);
 
-  projectName.addTaskToProject(task);
+  project.addTaskToProject(task);
   storeProject();
 }
 
