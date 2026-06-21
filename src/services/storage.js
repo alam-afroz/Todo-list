@@ -25,6 +25,7 @@ function retrieveTasks() {
       task.priority,
       task.subtask,
       task.completed,
+      task.id,
     );
   });
   return activeTasks;
