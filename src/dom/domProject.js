@@ -215,5 +215,16 @@ function openProject(projectToOpen) {
       console.log(myTasks);
     });
   });
+  const viewTasks = document.createElement("button");
+  viewTasks.id = "view_tasks";
+  viewTasks.textContent = "View Tasks";
+  document.querySelector("#content").appendChild(viewTasks);
+
+  viewTasks.addEventListener("click", () => {
+    document.getElementById("content").replaceChildren();
+    document.getElementById("content").dataset.state = "task";
+    showTasks();
+  });
 }
+
 export { showProjects, addingTaskToProject };

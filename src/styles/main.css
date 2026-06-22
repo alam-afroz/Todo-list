@@ -106,7 +106,7 @@ nav {
   align-self: center;
   height: 95%;
   display: grid;
-  grid-template-rows: 10% 85% 5%;
+  grid-template-rows: 10% 80% 10%;
 
   /* grid-auto-rows: minmax(20%, max-content); */
   /* min-height: 0; */
