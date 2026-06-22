@@ -11,9 +11,9 @@ class Project {
     // });
   }
 
-  deleteTaskFromProject(giveTask) {
+  deleteTaskFromProject(removableTask) {
     const indexOfTask = this.projectTask.findIndex(
-      (task) => task.title === giveTask,
+      (task) => task.id === removableTask.id,
     );
     this.projectTask.splice(indexOfTask, 1);
   }

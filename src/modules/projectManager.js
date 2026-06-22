@@ -22,11 +22,11 @@ function addTaskToProject(project, task) {
   storeProject();
 }
 
-function removeTaskFromProject(n, title) {
-  const projectName = myProjects[n];
+function removeTaskFromProject(project, title) {
+  // const projectName = myProjects[n];
   let task = myTasks.find((todo) => todo.title === title);
 
-  projectName.deleteTaskFromProject(task);
+  project.deleteTaskFromProject(task);
 }
 function removeProjectFromProject(projectID) {
   const indexOfProject = myProjects.findIndex(

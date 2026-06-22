@@ -3,6 +3,7 @@ import {
   myProjects,
   removeProjectFromProject,
   updateMyProjects,
+  removeTaskFromProject,
 } from "../modules/projectManager.js";
 
 import { myTasks } from "../modules/taskManager.js";
@@ -83,32 +84,32 @@ function showProjects() {
     openProjectBtn.textContent = "Open Project";
     projectCard.appendChild(openProjectBtn);
     openProjectBtn.addEventListener("click", () => {
-      document.getElementById("content").replaceChildren();
-      document.getElementById("content").dataset.state = "project";
+      // document.getElementById("content").replaceChildren();
+      // document.getElementById("content").dataset.state = "project";
 
       let projectToOpen = myProjects.find(
         (project) => project.id === projectID,
       );
+      openProject(projectToOpen);
+      // const projectTitle = document.createElement("p");
+      // projectTitle.classList.add("project_title");
+      // projectTitle.textContent = `${projectToOpen.name}`;
+      // document.getElementById("content").appendChild(projectTitle);
+      // const taskInProject = document.createElement("div");
+      // taskInProject.id = "task_in_project";
+      // document.getElementById("content").appendChild(taskInProject);
 
-      const projectTitle = document.createElement("p");
-      projectTitle.classList.add("project_title");
-      projectTitle.textContent = `${projectToOpen.name}`;
-      document.getElementById("content").appendChild(projectTitle);
-      const taskInProject = document.createElement("div");
-      taskInProject.id = "task_in_project";
-      document.getElementById("content").appendChild(taskInProject);
+      // projectToOpen.projectTask.forEach((projectTask) => {
+      //   const projectTaskCard = document.createElement("div");
+      //   projectTaskCard.classList.add("project_task_card");
 
-      projectToOpen.projectTask.forEach((projectTask) => {
-        const projectTaskCard = document.createElement("div");
-        projectTaskCard.classList.add("project_task_card");
+      //   taskInProject.appendChild(projectTaskCard);
 
-        taskInProject.appendChild(projectTaskCard);
-
-        const projectTaskName = document.createElement("p");
-        projectTaskName.classList.add("project_task_name");
-        projectTaskName.textContent = `${projectTask.title}`;
-        projectTaskCard.appendChild(projectTaskName);
-      });
+      //   const projectTaskName = document.createElement("p");
+      //   projectTaskName.classList.add("project_task_name");
+      //   projectTaskName.textContent = `${projectTask.title}`;
+      //   projectTaskCard.appendChild(projectTaskName);
+      // });
     });
   });
   storeProject();
@@ -157,7 +158,7 @@ document
 function openProject(projectToOpen) {
   document.getElementById("content").replaceChildren();
   document.getElementById("content").dataset.state = "project";
-  // showTasks(projectToOpen);
+
   const projectTitle = document.createElement("p");
   projectTitle.classList.add("project_title");
   projectTitle.textContent = `${projectToOpen.name}`;
@@ -176,6 +177,22 @@ function openProject(projectToOpen) {
     projectTaskName.classList.add("project_task_name");
     projectTaskName.textContent = `${projectTask.title}`;
     projectTaskCard.appendChild(projectTaskName);
+
+    const removeTaskFromProjectBtn = document.createElement("button");
+    removeTaskFromProjectBtn.classList.add("remove_task_from_project_btn");
+    removeTaskFromProjectBtn.textContent = "Remove task";
+    projectTaskCard.appendChild(removeTaskFromProjectBtn);
+    console.log(projectToOpen, projectTask);
+    removeTaskFromProjectBtn.addEventListener("click", () => {
+      projectToOpen.deleteTaskFromProject(projectTask);
+      projectTaskCard.remove();
+      storeProject();
+      openProject(projectToOpen);
+    });
+    // const taskCompleteBox = document.createElement("input");
+    // taskCompleteBox.classList.add("task_completed_box");
+    // taskCompleteBox.type = "checkbox";
+    // taskCard.appendChild(taskCompleteBox);
   });
 }
 export { showProjects, addingTaskToProject };
