@@ -115,6 +115,9 @@
   width: 80%;
   text-align: center;
 }
+.add_task_to_project_btn:hover {
+  opacity: 60%;
+}
 .open_project_btn {
   cursor: pointer;
   grid-row: 3/4;
@@ -129,6 +132,9 @@
   align-self: center;
   text-align: center;
   text-wrap: balance;
+}
+.open_project_btn:hover {
+  opacity: 60%;
 }
 
 #form_to_add_task_to_project {
@@ -157,6 +163,8 @@
   color: var(--school-bus-yellow);
   margin: 4px 0px;
   border-bottom: 2px solid var(--bright-lemon);
+  text-wrap: balance;
+  text-align: center;
 }
 .fieldset_content > label,
 .fieldset_content > input {
@@ -171,6 +179,9 @@
   padding: 0px 4px;
   min-height: 20px;
   height: 4vh;
+}
+.fieldset_content > label:hover {
+  color: var(--icy-blue);
 }
 
 .fieldset_content > input {
@@ -282,6 +293,11 @@
   border-radius: 8px;
   font-size: 14px;
   text-wrap: nowrap;
+}
+.remove_task_from_project_btn:hover {
+  background-color: var(--school-bus-yellow);
+  /* color: var(--persian-blue); */
+  font-weight: bold;
 }
 .task_in_project_completed_box {
   height: 90%;

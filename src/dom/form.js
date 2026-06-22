@@ -96,7 +96,20 @@ function closeProjectForm() {
     .querySelector(".project_form_close")
     .addEventListener("click", () => {
       document.getElementById("form_project").reset();
+
       document.querySelector("#dialog_project").close();
+    });
+}
+
+function closeFormToAddTaskToProject() {
+  document
+    .getElementById("close_form_to_add_task_to_project")
+    .addEventListener("click", () => {
+      document.getElementById("form_to_add_task_to_project").reset();
+      // document.getElementById("content").replaceChildren();
+
+      document.querySelector("#add_task_to_project").close();
+      // showTasks();
     });
 }
 
@@ -108,4 +121,5 @@ export {
   createProjectFromForm,
   closeProjectForm,
   appendSubTask,
+  closeFormToAddTaskToProject,
 };

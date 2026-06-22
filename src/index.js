@@ -15,6 +15,7 @@ import {
   appendSubTask,
   closeProjectForm,
   createProjectFromForm,
+  closeFormToAddTaskToProject,
 } from "./dom/form.js";
 
 import {
@@ -57,3 +58,4 @@ closeTaskForm();
 appendSubTask();
 closeProjectForm();
 createProjectFromForm();
+closeFormToAddTaskToProject();

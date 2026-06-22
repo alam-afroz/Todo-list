@@ -247,6 +247,9 @@ dialog::backdrop {
   text-align: center;
   border-radius: 0px 0px 4px 4px;
 }
+.delete_task_btn:hover {
+  background-color: var(--persian-blue);
+}
 
 .task_completed_box {
   cursor: pointer;
