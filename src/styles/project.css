@@ -279,7 +279,8 @@
 }
 .project_title {
   grid-row: 1/2;
-
+  text-decoration: underline;
+  color: var(--bright-lemon);
   margin: 0px 8px;
   font-size: 1.2rem;
 }
@@ -294,17 +295,57 @@
   overflow-y: auto;
 }
 .project_task_card {
-  background-color: var(--icy-blue);
-  box-shadow: 1px 0px 8px 1px var(--persian-blue);
+  background-color: transparent;
+  /* border-style: ; */
+  border-right: 4px groove var(--dodger-blue);
+  box-shadow: 0px 0px 8px 1px var(--dodger-blue);
   width: 95%;
   justify-self: center;
   border-radius: 12px;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 80% 20%;
 }
-#show_task {
+.project_task_name {
+  grid-row: 1/2;
+  grid-column: 1/2;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--persian-blue);
+  align-self: center;
+  margin: 0px 1vw;
+}
+.project_task_due_date {
+  grid-row: 2/3;
+  grid-column: 1/2;
+  opacity: 70%;
+  color: var(--bright-lemon);
+  align-items: center;
+  margin: 0px 1vw;
+}
+.remove_task_from_project_btn {
+  cursor: pointer;
+  grid-row: 1/2;
+  grid-column: 2/3;
+  height: 70%;
+  width: 80%;
+  color: var(--icy-blue);
+  background-color: var(--dodger-blue);
+  align-self: center;
+  justify-self: center;
+  text-align: center;
+  border-radius: 8px;
+  font-size: 14px;
+  text-wrap: nowrap;
+}
+.task_in_project_completed_box {
+  height: 90%;
+}
+/* #show_task {
   grid-row: 3/4;
   margin: 0px 24px;
 
   justify-self: end;
   background-color: var(--dodger-blue);
   color: var(--icy-blue);
-}
+} */

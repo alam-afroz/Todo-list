@@ -15,6 +15,8 @@ import {
   storeTasks,
 } from "../services/storage.js";
 
+import { changeDateFormat } from "../services/date.js";
+
 import { showTasks, taskCompleteStatus, removeTask } from "./domTask.js";
 
 function a(p, t) {
@@ -178,6 +180,11 @@ function openProject(projectToOpen) {
     projectTaskName.textContent = `${projectTask.title}`;
     projectTaskCard.appendChild(projectTaskName);
 
+    const projectTaskDueDate = document.createElement("p");
+    projectTaskDueDate.classList.add("project_task_due_date");
+    projectTaskDueDate.textContent = `Due Date: ${changeDateFormat(projectTask.dueDate)}`;
+    projectTaskCard.appendChild(projectTaskDueDate);
+
     const removeTaskFromProjectBtn = document.createElement("button");
     removeTaskFromProjectBtn.classList.add("remove_task_from_project_btn");
     removeTaskFromProjectBtn.textContent = "Remove task";
@@ -189,10 +196,24 @@ function openProject(projectToOpen) {
       storeProject();
       openProject(projectToOpen);
     });
-    // const taskCompleteBox = document.createElement("input");
-    // taskCompleteBox.classList.add("task_completed_box");
-    // taskCompleteBox.type = "checkbox";
-    // taskCard.appendChild(taskCompleteBox);
+
+    const taskInProjectCompleteBox = document.createElement("input");
+    taskInProjectCompleteBox.classList.add("task_in_project_completed_box");
+    taskInProjectCompleteBox.type = "checkbox";
+    projectTaskCard.appendChild(taskInProjectCompleteBox);
+
+    let taskCompletedInProject = myTasks.find(
+      (task) => task.id === projectTask.id,
+    );
+    taskInProjectCompleteBox.checked = taskCompletedInProject.completed;
+
+    taskInProjectCompleteBox.addEventListener("change", () => {
+      console.log(taskCompletedInProject);
+      taskCompletedInProject.taskCompleted();
+      taskInProjectCompleteBox.checked = taskCompletedInProject.completed;
+      storeTasks();
+      console.log(myTasks);
+    });
   });
 }
 export { showProjects, addingTaskToProject };
