@@ -201,12 +201,12 @@
   /* all: unset; */
   display: grid;
   border: none;
-  /* height: 95%; */
-  grid-auto-rows: minmax(15%, max-content);
+  height: 95%;
+  grid-auto-rows: minmax(30%, max-content);
   grid-template-columns: 90% 10%;
   min-height: 0;
 
-  overflow-y: auto;
+  overflow-y: scroll;
 }
 .fieldset > legend {
   color: var(--school-bus-yellow);
@@ -225,10 +225,26 @@
   margin: 4px 2px;
   padding: 0px 4px;
   min-height: 20px;
+  height: 4vh;
 }
 
 .fieldset_content > input {
+  margin: 0.8vh;
+  appearance: none;
+  width: 24px;
+  background-color: white;
+  border: 1px solid black;
   justify-self: center;
+  height: 24px;
+}
+.fieldset_content > input:checked {
+  margin: 0.8vh;
+  appearance: none;
+  width: 24px;
+  background-color: rgb(255, 133, 133);
+  border: 1px solid black;
+  justify-self: center;
+  height: 24px;
 }
 #save_task_to_project {
   cursor: pointer;

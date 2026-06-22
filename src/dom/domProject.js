@@ -14,6 +14,8 @@ import {
   storeTasks,
 } from "../services/storage.js";
 
+import { showTasks, taskCompleteStatus, removeTask } from "./domTask.js";
+
 function a(p, t) {
   addTaskToProject(p, t);
 }
@@ -36,10 +38,6 @@ function addingTaskToProject() {
     document.querySelector(".fieldset_content").appendChild(addThisTask);
   });
   document.getElementById("add_task_to_project").showModal();
-}
-
-function openProject() {
-  //
 }
 
 function showProjects() {
@@ -91,7 +89,7 @@ function showProjects() {
       let projectToOpen = myProjects.find(
         (project) => project.id === projectID,
       );
-      // console.log(projectToOpen);
+
       const projectTitle = document.createElement("p");
       projectTitle.classList.add("project_title");
       projectTitle.textContent = `${projectToOpen.name}`;
@@ -150,9 +148,34 @@ document
     console.log('extracting id"s from form object :', taskList);
     storeProject();
     console.log("Current project array : ", myProjects);
+    openProject(projectToAddTask);
     document.getElementById("add_task_to_project").close();
     document.getElementById("form_to_add_task_to_project").reset();
     currentProjectID = null;
   });
 
+function openProject(projectToOpen) {
+  document.getElementById("content").replaceChildren();
+  document.getElementById("content").dataset.state = "project";
+  // showTasks(projectToOpen);
+  const projectTitle = document.createElement("p");
+  projectTitle.classList.add("project_title");
+  projectTitle.textContent = `${projectToOpen.name}`;
+  document.getElementById("content").appendChild(projectTitle);
+  const taskInProject = document.createElement("div");
+  taskInProject.id = "task_in_project";
+  document.getElementById("content").appendChild(taskInProject);
+
+  projectToOpen.projectTask.forEach((projectTask) => {
+    const projectTaskCard = document.createElement("div");
+    projectTaskCard.classList.add("project_task_card");
+
+    taskInProject.appendChild(projectTaskCard);
+
+    const projectTaskName = document.createElement("p");
+    projectTaskName.classList.add("project_task_name");
+    projectTaskName.textContent = `${projectTask.title}`;
+    projectTaskCard.appendChild(projectTaskName);
+  });
+}
 export { showProjects, addingTaskToProject };

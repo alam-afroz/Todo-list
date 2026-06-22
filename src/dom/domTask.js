@@ -49,8 +49,8 @@ function removeTask(taskID, taskCard) {
   taskCard.remove();
 }
 
-function showTasks() {
-  myTasks.forEach((task) => {
+function showTasks(array = myTasks) {
+  array.forEach((task) => {
     const taskCard = document.createElement("div");
     taskCard.classList.add("task_card");
 
@@ -107,8 +107,8 @@ function showTasks() {
     const done = document.createElement("p");
     done.classList.add("done");
     taskCard.append(done);
-    let index = myTasks.findIndex((item) => item.id === taskID);
-    if (myTasks[index].completed === true) {
+    let index = array.findIndex((item) => item.id === taskID);
+    if (array[index].completed === true) {
       taskCompleteBox.checked = true;
 
       taskCompleteStatus(
@@ -140,9 +140,9 @@ function showTasks() {
     });
     deleteTaskBtn.addEventListener("click", () => {
       removeTask(taskID, taskCard);
-      console.log(myTasks);
+      console.log(array);
     });
   });
 }
 
-export { showTasks };
+export { showTasks, taskCompleteStatus, removeTask };

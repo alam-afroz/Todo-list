@@ -21,6 +21,7 @@
   justify-self: start;
   margin-left: 8px;
   font-size: 1.2rem;
+  text-wrap: nowrap;
 }
 .task_card_description {
   grid-row: 2/3;
