@@ -205,10 +205,12 @@ function openProject(projectToOpen) {
     let taskCompletedInProject = myTasks.find(
       (task) => task.id === projectTask.id,
     );
-    taskInProjectCompleteBox.checked = taskCompletedInProject.completed;
-
+    if (taskCompletedInProject === undefined) {
+      console.log("Task id mis-match");
+    } else {
+      taskInProjectCompleteBox.checked = taskCompletedInProject.completed;
+    }
     taskInProjectCompleteBox.addEventListener("change", () => {
-      console.log(taskCompletedInProject);
       taskCompletedInProject.taskCompleted();
       taskInProjectCompleteBox.checked = taskCompletedInProject.completed;
       storeTasks();

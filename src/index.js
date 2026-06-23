@@ -58,4 +58,4 @@ closeTaskForm();
 appendSubTask();
 closeProjectForm();
 createProjectFromForm();
-closeFormToAddTaskToProject();
+// closeFormToAddTaskToProject();
