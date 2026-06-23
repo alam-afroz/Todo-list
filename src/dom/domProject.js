@@ -63,7 +63,11 @@ function showProjects() {
 
     deleteProjectBtn.addEventListener("click", () => {
       removeProjectFromProject(projectID);
+
       projectCard.remove();
+      document.getElementById("content").replaceChildren();
+      // document.getElementById("content").dataset.state = "task";
+      showTasks();
       // console.log(myProjects);
       storeProject();
     });

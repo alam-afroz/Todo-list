@@ -50,6 +50,8 @@ function removeTask(taskID, taskCard) {
 }
 
 function showTasks(array = myTasks) {
+  document.getElementById("content").dataset.state = "task";
+
   array.forEach((task) => {
     const taskCard = document.createElement("div");
     taskCard.classList.add("task_card");
