@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List</title>
+  <script defer src="main.js"></script></head>
+  <body>
+    <div class="container">
+      <dialog id="dialog_task">
+        <form id="form_task">
+          <p id="p_for_task_title">
+            <label for="task_title">Task Title</label>
+            <input
+              type="text"
+              id="task_title"
+              name="task_title"
+              placeholder="Write task here"
+              required
+            />
+          </p>
+          <p id="p_for_task_description">
+            <label for="task_description">Description</label>
+            <textarea
+              type="text"
+              id="task_description"
+              name="task_description"
+              placeholder="Any details related to the task"
+            ></textarea>
+          </p>
+
+          <div id="p_for_task_priority">
+            <span>Priority : </span>
+            <p>
+              <label for="high_priority">High</label>
+              <input
+                type="radio"
+                id="high_priority"
+                name="priority"
+                value="High-Priority"
+              />
+            </p>
+            <p>
+              <label for="moderate_priority">Moderate</label>
+              <input
+                type="radio"
+                id="moderate_priority"
+                name="priority"
+                value="Moderate-Priority"
+              />
+            </p>
+            <p>
+              <label for="low_priority">Low</label>
+              <input
+                type="radio"
+                id="low_priority"
+                name="priority"
+                value="Low-Priority"
+              />
+            </p>
+          </div>
+          <p id="p_for_task_due_date">
+            <label for="task_due_date">Due Date</label>
+            <input type="date" id="task_due_date" name="task_due_date" />
+          </p>
+
+          <p class="subtask">
+            <button class="add_subtask">Add Subtask</button>
+          </p>
+          <button type="submit" class="save_task">Save Task</button>
+          <button class="task_form_close">Close</button>
+        </form>
+      </dialog>
+      <dialog id="dialog_project">
+        <form id="form_project">
+          <p>
+            <label for="project_name">Project Name</label>
+            <input type="text" name="project_name" id="project_name" required />
+          </p>
+          <button type="submit" class="save_project">Save Project</button>
+          <button class="project_form_close">Close</button>
+        </form>
+      </dialog>
+      <dialog id="add_task_to_project">
+        <form id="form_to_add_task_to_project">
+          <fieldset class="fieldset">
+            <legend>
+              Select the Tasks to add to this Project
+              <br />( Use Task+ button to add new Task )
+            </legend>
+            <p class="fieldset_content"></p>
+          </fieldset>
+          <button id="close_form_to_add_task_to_project">Close</button>
+          <button type="submit" id="save_task_to_project">
+            Save task to the Project
+          </button>
+        </form>
+      </dialog>
+      <header>
+        <div class="logo">
+          <p id="logo_task">Task</p>
+          <p id="logo_to">To</p>
+          <p id="logo_do">Do</p>
+        </div>
+      </header>
+      <nav id="nav">
+        <button id="add_project_btn">Add Projects</button>
+        <p id="project_heading">Projects |</p>
+        <div id="project_list"></div>
+      </nav>
+      <button id="add_task_btn">Task +</button>
+      <div id="content" data-state="task"></div>
+      <footer>
+        <p>
+          <span
+            >Made by
+            <a
+              href="https://github.com/alam-afroz"
+              target="_blank"
+              rel="noreferrer noopener"
+              >Afroz Alam</a
+            ></span
+          >
+        </p>
+        <p>
+          <span
+            >View On GitHub
+            <a
+              href="https://github.com/alam-afroz/Todo-list.git"
+              target="_blank"
+              rel="noreferrer noopener"
+              >Afroz Alam</a
+            ></span
+          >
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>
